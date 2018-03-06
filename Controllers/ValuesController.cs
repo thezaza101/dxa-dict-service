@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Net;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -22,16 +23,20 @@ namespace dxa_dict_service.Controllers
                 
                 if (data == null)
                 {
-                    StreamReader sr = new StreamReader("DefCat.txt");
+                    WebClient client = new WebClient();
+                    Stream stream = client.OpenRead("https://raw.githubusercontent.com/thezaza101/dxa-dict-service/master/DefCat.txt");
+                    
+                    StreamReader sr = new StreamReader(stream);
                     string x = sr.ReadToEnd();
                     sr.Close();
 
-                    data = x.Split(Environment.NewLine);
+                    data = x.Split(',');
                 }
                 if (!string.IsNullOrWhiteSpace(query))
                 {
                     if (query.Length > 3)
                     {
+                        Console.WriteLine (data[0]);
                         toReturn = GetMatch(query);
                     }
                 }

@@ -1,0 +1,10 @@
+C:\Users\theza\Documents\GitHub\dxa-dict-service\bin\Release\netcoreapp2.0\dxa-dict-service.deps.json
+C:\Users\theza\Documents\GitHub\dxa-dict-service\bin\Release\netcoreapp2.0\dxa-dict-service.runtimeconfig.json
+C:\Users\theza\Documents\GitHub\dxa-dict-service\bin\Release\netcoreapp2.0\dxa-dict-service.runtimeconfig.dev.json
+C:\Users\theza\Documents\GitHub\dxa-dict-service\bin\Release\netcoreapp2.0\dxa-dict-service.dll
+C:\Users\theza\Documents\GitHub\dxa-dict-service\bin\Release\netcoreapp2.0\dxa-dict-service.pdb
+C:\Users\theza\Documents\GitHub\dxa-dict-service\obj\Release\netcoreapp2.0\dxa-dict-service.csproj.CoreCompileInputs.cache
+C:\Users\theza\Documents\GitHub\dxa-dict-service\obj\Release\netcoreapp2.0\dxa-dict-service.AssemblyInfoInputs.cache
+C:\Users\theza\Documents\GitHub\dxa-dict-service\obj\Release\netcoreapp2.0\dxa-dict-service.AssemblyInfo.cs
+C:\Users\theza\Documents\GitHub\dxa-dict-service\obj\Release\netcoreapp2.0\dxa-dict-service.dll
+C:\Users\theza\Documents\GitHub\dxa-dict-service\obj\Release\netcoreapp2.0\dxa-dict-service.pdb
