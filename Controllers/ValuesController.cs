@@ -36,7 +36,6 @@ namespace dxa_dict_service.Controllers
                 {
                     if (query.Length > 3)
                     {
-                        Console.WriteLine (data[0]);
                         toReturn = GetMatch(query);
                     }
                 }
