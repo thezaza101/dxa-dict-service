@@ -17,6 +17,8 @@ namespace dxa_dict_service.Controllers
         [HttpGet("{query}")]
         public string Get(string query)
         {
+            Console.WriteLine("Request recieved from: [Remote] {0} || {1} ------[Local] || {2} || {3}", Request.HttpContext.Connection.RemoteIpAddress, Request.HttpContext.Connection.RemotePort, Request.HttpContext.Connection.LocalIpAddress, Request.HttpContext.Connection.LocalPort);
+            //Console.WriteLine(Request.ToString());
             string toReturn = "";
             if (!(query == null))
             {
