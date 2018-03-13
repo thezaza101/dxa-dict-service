@@ -33,6 +33,7 @@ namespace dxa_dict_service.Controllers
                     sr.Close();
 
                     data = x.Split(',');
+                    Console.WriteLine("Read {0} elements into memory", data.Count());
                 }
                 if (!string.IsNullOrWhiteSpace(query))
                 {
@@ -79,7 +80,8 @@ namespace dxa_dict_service.Controllers
         /// </summary>
         public int Levenshtein(string s, string t)
         {
-            try{
+            try
+            {
                 int n = s.Length;
                 int m = t.Length;
                 int[,] d = new int[n + 1, m + 1];
