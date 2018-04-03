@@ -5,19 +5,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using DXANET;
 
 namespace dxa_dict_service.Controllers
 {
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
-        string[] data;
+        List<DictElement> data;        
 
         // GET api/values/5
         [HttpGet("{query}")]
-        public string Get(string query)
+        public string Get(string query, List<string> domain)
         {
-            Console.WriteLine("Request recieved from: [Remote] {0} || {1} ------[Local] || {2} || {3}", Request.HttpContext.Connection.RemoteIpAddress, Request.HttpContext.Connection.RemotePort, Request.HttpContext.Connection.LocalIpAddress, Request.HttpContext.Connection.LocalPort);
+            Console.WriteLine("{0}:{1}: Request recieved: {2}", DateTime.Now, DateTime.Now.Millisecond, query);
             //Console.WriteLine(Request.ToString());
             string toReturn = "";
             if (!(query == null))
@@ -26,20 +27,18 @@ namespace dxa_dict_service.Controllers
                 if (data == null)
                 {
                     WebClient client = new WebClient();
-                    Stream stream = client.OpenRead("https://raw.githubusercontent.com/thezaza101/dxa-dict-service/master/DefCat.txt");
-                    
+                    Stream stream = client.OpenRead("https://raw.githubusercontent.com/thezaza101/dxa-dict-src-creator/master/DictData.csv");
                     StreamReader sr = new StreamReader(stream);
                     string x = sr.ReadToEnd();
                     sr.Close();
-
-                    data = x.Split(',');
+                    data = DictElement.ReadDictElementsFromCSV(x);
                     Console.WriteLine("Read {0} elements into memory", data.Count());
                 }
                 if (!string.IsNullOrWhiteSpace(query))
                 {
                     if (query.Length > 3)
                     {
-                        toReturn = GetMatch(query);
+                        toReturn = GetMatch(query, domain);
                     }
                 }
             }
@@ -49,18 +48,39 @@ namespace dxa_dict_service.Controllers
 
 
 
-        string GetMatch(string input)
+        string GetMatch(string input, List<string> domains)
         {
             string output = "";
-            DistanceResult[] result = new DistanceResult[data.Length];
-            
-            int i = 0;
-            foreach (string s in data)
+            DistanceResult[] result;
+            bool searchSpecificDomains = false;
+            if (!domains.Count.Equals(0))
             {
-                result[i].value = s;
-                result[i].distance = Levenshtein(input.ToLower(), s.ToLower());
-                i++;
+                searchSpecificDomains = true;   
             }
+
+            int i = 0;
+            if (searchSpecificDomains)
+            {
+                List<DictElement> filterdDataElements = data.Where(d => domains.Contains(d.domainAcronym)).ToList();
+                result = new DistanceResult[filterdDataElements.Count];
+                foreach (DictElement s in filterdDataElements)
+                {
+                    result[i].value = s.elementName;
+                    result[i].distance = Levenshtein(input.ToLower(), s.elementName.ToLower());
+                    i++;                
+                }
+            }
+            else
+            {
+                result = new DistanceResult[data.Count];
+                foreach (DictElement s in data)
+                {
+                    result[i].value = s.elementName;
+                    result[i].distance = Levenshtein(input.ToLower(), s.elementName.ToLower());
+                    i++;                
+                }
+            }
+            
             DistanceResult maxVal = result.OrderBy(y => y.distance).FirstOrDefault();
             if(maxVal.distance>=Convert.ToInt32(input.Length*.5))
             {
@@ -129,10 +149,5 @@ namespace dxa_dict_service.Controllers
                 return 100;
             }
         }        
-    }
-    public struct DistanceResult
-    {
-        public string value;
-        public int distance;
     }
 }

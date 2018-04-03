@@ -15,5 +15,12 @@
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.2" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <Reference Include="DXANET.dll">
+      <HintPath>DXANET.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion> 
+    </Reference>
+  </ItemGroup>
 
 </Project>
