@@ -19,8 +19,9 @@ namespace dxa_dict_service.Controllers
         public string Get(string query, List<string> domain)
         {
             string domains = "";
+            string dataFileName = "DictData.csv";
             domain.ForEach(i => domains = domains + i + " ");
-            Console.WriteLine("{0}:{1}: Request recieved: {2} in the {3} domains", DateTime.Now, DateTime.Now.Millisecond, query,domains);
+            Console.WriteLine("{0}:{1}: Request recieved: {2} in the {3}domain(s)", DateTime.Now, DateTime.Now.Millisecond, query,domains);
             //Console.WriteLine(Request.ToString());
             string toReturn = "";
             if (!(query == null))
@@ -28,11 +29,25 @@ namespace dxa_dict_service.Controllers
                 
                 if (data == null)
                 {
-                    WebClient client = new WebClient();
-                    Stream stream = client.OpenRead("https://raw.githubusercontent.com/thezaza101/dxa-dict-src-creator/master/DictData.csv");
-                    StreamReader sr = new StreamReader(stream);
-                    string x = sr.ReadToEnd();
-                    sr.Close();
+                    string x;
+                    if (System.IO.File.Exists(dataFileName))
+                    {
+                        StreamReader sr = new StreamReader(dataFileName);
+                        x = sr.ReadToEnd();
+                        sr.Close();
+                    }
+                    else
+                    {
+                        WebClient client = new WebClient();
+                        Stream stream = client.OpenRead("https://raw.githubusercontent.com/thezaza101/dxa-dict-src-creator/master/"+dataFileName);
+                        StreamReader sr = new StreamReader(stream);
+                        x = sr.ReadToEnd();
+                        sr.Close();
+                        StreamWriter sw = new StreamWriter(dataFileName);
+                        sw.Write(x);
+                        sw.Close();
+                        Console.WriteLine("Saved file {0} into local storage",dataFileName);
+                    }                    
                     data = DictElement.ReadDictElementsFromCSV(x);
                     Console.WriteLine("Read {0} elements into memory", data.Count());
                 }
