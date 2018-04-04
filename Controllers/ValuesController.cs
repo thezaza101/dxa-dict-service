@@ -18,7 +18,9 @@ namespace dxa_dict_service.Controllers
         [HttpGet("{query}")]
         public string Get(string query, List<string> domain)
         {
-            Console.WriteLine("{0}:{1}: Request recieved: {2}", DateTime.Now, DateTime.Now.Millisecond, query);
+            string domains = "";
+            domain.ForEach(i => domains = domains + i + " ");
+            Console.WriteLine("{0}:{1}: Request recieved: {2} in the {3} domains", DateTime.Now, DateTime.Now.Millisecond, query,domains);
             //Console.WriteLine(Request.ToString());
             string toReturn = "";
             if (!(query == null))
