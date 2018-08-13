@@ -10,3 +10,16 @@ C:\Users\theza\Documents\GitHub\dxa-dict-service\obj\Debug\netcoreapp2.0\dxa-dic
 C:\Users\theza\Documents\GitHub\dxa-dict-service\obj\Debug\netcoreapp2.0\dxa-dict-service.pdb
 C:\Users\theza\Documents\GitHub\dxa-dict-service\bin\Debug\netcoreapp2.0\DXANET.dll
 C:\Users\theza\Documents\GitHub\dxa-dict-service\bin\Debug\netcoreapp2.0\DXANET.pdb
+D:\Projects\dxa-dict-service\bin\Debug\netcoreapp2.0\dxa-dict-service.deps.json
+D:\Projects\dxa-dict-service\bin\Debug\netcoreapp2.0\dxa-dict-service.runtimeconfig.json
+D:\Projects\dxa-dict-service\bin\Debug\netcoreapp2.0\dxa-dict-service.runtimeconfig.dev.json
+D:\Projects\dxa-dict-service\bin\Debug\netcoreapp2.0\dxa-dict-service.dll
+D:\Projects\dxa-dict-service\bin\Debug\netcoreapp2.0\dxa-dict-service.pdb
+D:\Projects\dxa-dict-service\bin\Debug\netcoreapp2.0\DXANET.dll
+D:\Projects\dxa-dict-service\obj\Debug\netcoreapp2.0\dxa-dict-service.csprojAssemblyReference.cache
+D:\Projects\dxa-dict-service\obj\Debug\netcoreapp2.0\dxa-dict-service.csproj.CoreCompileInputs.cache
+D:\Projects\dxa-dict-service\obj\Debug\netcoreapp2.0\dxa-dict-service.AssemblyInfoInputs.cache
+D:\Projects\dxa-dict-service\obj\Debug\netcoreapp2.0\dxa-dict-service.AssemblyInfo.cs
+D:\Projects\dxa-dict-service\obj\Debug\netcoreapp2.0\dxa-dict-service.csproj.CopyComplete
+D:\Projects\dxa-dict-service\obj\Debug\netcoreapp2.0\dxa-dict-service.dll
+D:\Projects\dxa-dict-service\obj\Debug\netcoreapp2.0\dxa-dict-service.pdb
